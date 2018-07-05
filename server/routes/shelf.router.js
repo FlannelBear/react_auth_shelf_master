@@ -1,7 +1,7 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-
+const userCount = [];
 /**
  * Get all of the items on the shelf
  */
@@ -78,7 +78,21 @@ router.put('/:id', (req, res) => {
  * they have added to the shelf
  */
 router.get('/count', (req, res) => {
-
+      if (req.isAuthenticated()){
+        const queryText = `SELECT person.id as id, person.username as username,
+         sum(item.person_id) as total from item right join person on person.id  = item.person_id
+         group by person.id;`;
+        pool.query(queryText)
+        .then(result => {
+            res.send(result.rows);
+        }).catch(error => {
+            console.log('Error handling router.get.count.',error);
+            res.sendStatus(500);
+        })
+      }
+      else{
+        res.sendStatus(500);
+      }
 });
 
 
