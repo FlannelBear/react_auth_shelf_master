@@ -22,7 +22,16 @@ router.post('/', (req, res) => {
  * Delete an item if it's something the logged in user added
  */
 router.delete('/:id', (req, res) => {
-
+    if(req.isAuthenticated()){
+    queryText = 'DELETE FROM item where id = $1;';
+    pool.query(queryText, [req.params.id]).then(result => {
+        res.sendStatus(200);
+    }).catch(error => {
+        console.log('Error handling DELETE for /api/shelf: ', error);
+        res.sendStatus(500)});
+    } else {
+        res.sendStatus(403);
+    }
 });
 
 
