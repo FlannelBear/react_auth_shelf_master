@@ -33,7 +33,7 @@ router.post('/', (req, res) => {
         pool.query(queryText, [
             req.body.description,
             req.body.image_url,
-            req.body.person_id
+            req.user.id
         ]).then((result) => {
             console.log('back from db with:', result);
             res.sendStatus(200);
