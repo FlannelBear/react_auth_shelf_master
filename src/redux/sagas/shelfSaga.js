@@ -2,7 +2,12 @@ import axios from 'axios';
 import {call, put, takeEvery} from 'redux-saga/effects';
 
 function* fetchAll(){
-
+    try {
+        const items = yield call(axios.get, '/api/shelf/');
+        yield put({type: 'STORE_ITEMS', payload: items.data})
+    } catch (error) {
+        console.log('Error in fetchAll shelfSaga GET');
+    }
 }
 
 function* fetchCount(){
