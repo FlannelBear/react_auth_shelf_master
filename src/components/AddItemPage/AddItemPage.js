@@ -7,31 +7,28 @@ class AddItem extends Component {
     constructor(props){
         super(props);
         this.state = {
-        itemToAdd: {
             description:'',
             image_url:'',
             person_id: this.props.user.id
         }
-        }
     }
 
     handleChange = (event) => {
+      const prop = event.target.id;
+      const val = event.target.value;
       this.setState({
-        itemToAdd: event.target.value,
+        ...this.state, [prop]: val
       });
     }
   
-    handleClick = () => {
-        if(this.state.itemToAdd.description.length > 0 || this.state.itemToAdd.image_url.length > 0){
-      this.props.dispatch({ type: 'ADD_ITEM', payload: this.state.itemToAdd });
-    
-    this.setState({
-        itemToAdd: '',
-        });
-    }
-        else {
+    handleClick = (event) => {
+      event.preventDefault();
+      if(this.state.description.length > 0 || this.state.image_url.length > 0){
+        this.props.dispatch({ type: 'ADD_ITEM', payload: this.state });
+        this.setState({...this.state, description: '', image_url: ''})
+      } else {
         alert('Somewthing wrong AddItemPage');
-        }
+      }
     }
 
     render() {
@@ -39,9 +36,9 @@ class AddItem extends Component {
         <div>
           <Nav />
           <form>
-            <input value={ this.state.itemToAdd.description } onChange={this.handleChange} 
+            <input id="description" value={ this.state.description } onChange={this.handleChange} 
               placeholder="Description" />
-            <input value={ this.state.itemToAdd.image_url} onChange={this.handleChange} 
+            <input id="image_url" value={ this.state.image_url} onChange={this.handleChange} 
             placeholder="URL"/>
              <button onClick={this.handleClick}>Add Item</button>
           </form>
