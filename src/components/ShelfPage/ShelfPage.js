@@ -41,7 +41,7 @@ class ShelfPage extends Component {
                     <div key={item.id}>
                         <h3>{item.description}</h3>
                         <button onClick={ () => this.deleteItem(item.id) }>Delete</button>
-                        <img src={item.image_url} width="100"/>
+                        <img src={item.image_url} width="100" alt="Image"/>
                     </div>
                   )}
             </div>

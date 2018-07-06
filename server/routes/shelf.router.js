@@ -79,7 +79,7 @@ router.put('/:id', (req, res) => {
 router.get('/count', (req, res) => {
       if (req.isAuthenticated()){
         const queryText = `SELECT person.id as id, person.username as username,
-         sum(item.person_id) as total from item right join person on person.id  = item.person_id
+         count(item.person_id) as total from item right join person on person.id  = item.person_id
          group by person.id;`;
         pool.query(queryText)
         .then(result => {
