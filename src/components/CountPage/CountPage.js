@@ -20,7 +20,7 @@ class CountPage extends Component{
 
         const countList = (
             <ul>
-            {this.props.count.map(item => <li key={item.id}>User: {item.username} Posts: {item.total}</li>)}
+            {this.props.count.map(item => <li key={item.id}>User: {item.username} Posts: {item.total === null ? 0 : item.total}</li>)}
             </ul>
         );
 
