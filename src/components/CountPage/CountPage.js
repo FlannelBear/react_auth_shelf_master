@@ -19,9 +19,9 @@ class CountPage extends Component{
     render(){
 
         const countList = (
-            <ul>
-            {this.props.count.map(item => <li key={item.id}>User: {item.username} Posts: {item.total === null ? 0 : item.total}</li>)}
-            </ul>
+            <div>
+            {this.props.count.map(item => <h3 key={item.id}>User: {item.username} Posts: {item.total === null ? 0 : item.total}</h3>)}
+            </div>
         );
 
         return(

@@ -38,11 +38,10 @@ class ShelfPage extends Component {
             </p>
             <div> 
                   {this.props.shelf.shelfReducer.map( item =>
-                    <li key={item.id}>
-                        {item.description}
-                        <br/>    
-                        <button onClick={ () => this.deleteItem(item.id) }>Delete</button>
-                    </li>
+                    <div>
+                      <h3 key={item.id}>{item.description}</h3> 
+                      <button onClick={ () => this.deleteItem(item.id) }>Delete</button>
+                    </div>
                   )}
             </div>
           </div>
