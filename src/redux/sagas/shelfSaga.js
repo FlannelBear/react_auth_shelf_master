@@ -1,16 +1,17 @@
 import axios from 'axios';
-import {call, post, takeEvery} from 'redux-saga';
+import {call, put, takeEvery} from 'redux-saga/effects';
 
 function* fetchAll(){
 
 }
 
 function* fetchCount(){
-
+    const count = yield call(axios.get, '/api/shelf/count');
+    yield put({type: 'STORE_COUNT', payload: count.data})
 }
 
 function* addItem(){
-    
+
 }
 
 function* shelfSaga(){
