@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
+import Nav from '../Nav/Nav';
 
 class AddItem extends Component {
     constructor(props){
@@ -36,6 +37,7 @@ class AddItem extends Component {
     render() {
       return (
         <div>
+          <Nav />
           <form>
             <input value={ this.state.itemToAdd.description } onChange={this.handleChange} 
               placeholder="Description" />
