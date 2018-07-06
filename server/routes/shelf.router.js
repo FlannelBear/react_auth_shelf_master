@@ -8,7 +8,6 @@ const userCount = [];
 router.get('/', (req, res) => {
     if (req.isAuthenticated()){
         console.log('in GET route to get all items on shelf');
-        console.log('is authenticated?'. req.isAuthenticated());
         console.log('user', req.user);
         let queryText = `SELECT * FROM "item"`;
         pool.query(queryText).then((result) => {
