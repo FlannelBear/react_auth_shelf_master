@@ -11,7 +11,9 @@ import LoginPage from './components/LoginPage/LoginPage';
 import RegisterPage from './components/RegisterPage/RegisterPage';
 import UserPage from './components/UserPage/UserPage';
 import InfoPage from './components/InfoPage/InfoPage';
+import ShelfPage from './components/ShelfPage/ShelfPage';
 import CountPage from './components/CountPage/CountPage';
+import AddItem from './components/AddItem/AddItem';
 
 import './styles/main.css';
 
@@ -37,9 +39,17 @@ const App = () => (
           path="/info"
           component={InfoPage}
         />
+        <Route
+          path="/shelf"
+          component={ShelfPage}
+        />
         <Route 
           path="/count"
           component={CountPage}
+        />
+        <Route
+          path="/addItem"
+          component={AddItem}
         />
       </Switch>
     </Router>
