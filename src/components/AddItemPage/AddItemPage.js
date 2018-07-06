@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import axios from 'axios';
 
 
 class AddItem extends Component {
-    contructor(props){
+    constructor(props){
         super(props);
         this.state = {
         itemToAdd: {
