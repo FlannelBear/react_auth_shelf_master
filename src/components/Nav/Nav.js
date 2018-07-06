@@ -25,6 +25,11 @@ const Nav = () => (
             Count
           </Link>
         </li>
+        <li>
+          <Link to="/addItem">
+            Add Form
+          </Link>
+        </li>
       </ul>
     </div>
   </div>
