@@ -6,8 +6,12 @@ function* fetchAll(){
 }
 
 function* fetchCount(){
-    const count = yield call(axios.get, '/api/shelf/count');
-    yield put({type: 'STORE_COUNT', payload: count.data})
+    try{
+        const countResponse = yield call(axios.get, '/api/shelf/count');
+        yield put({type: 'STORE_COUNT', payload: countResponse.data});
+    } catch(error) {
+        console.log(error);
+    }
 }
 
 function* addItem(){
