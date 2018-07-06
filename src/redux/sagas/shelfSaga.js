@@ -10,9 +10,15 @@ function* fetchCount(){
     yield put({type: 'STORE_COUNT', payload: count.data})
 }
 
-function* addItem(){
-
-}
+function* addItem(action){
+        console.log('in addItem');
+        try {
+            yield call( axios.post,'/api/shelf',action.payload)
+            yield put({type: 'FETCH_ALL'});
+        } catch (error){
+            console.log('Error in addItem:', error)
+        }
+    }
 
 function* shelfSaga(){
     yield takeEvery('FETCH_ALL', fetchAll);
